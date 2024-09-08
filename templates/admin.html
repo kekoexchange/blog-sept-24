@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div>
+    <h3>User Management</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <!-- Example of an action button to delete a user -->
+                    <!-- Add appropriate URL and method for deleting a user -->
+                    <form method="post" action="{{ url_for('delete_user', user_id=user.id) }}">
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
