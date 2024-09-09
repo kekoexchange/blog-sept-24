@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 app = Flask(__name__)
-app.config.from_object('blog_app.config.Config')
+app.config.from_object('config.Config')
 
 db = SQLAlchemy(app)
 
@@ -17,4 +17,4 @@ def load_user(user_id):
     from .models import User 
     return User.query.get(int(user_id))
 
-from . import routes
+import routes
